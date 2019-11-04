@@ -8,51 +8,59 @@ var optValidBoolean = true;
 
 // 1. PASSWORD LENGTH PROMPT
     length = prompt("please input a number of the length of the password you want.\n *min: 8 - max: 128\n *default: 8");
-    console.log("1st"+length);
+
     if(length !== null){
 
-        length = Number(length);
-
         // Length Validator & Reinput prompt
-        while(Number.isNaN(length) === true || length < 8 || length > 128 ){
-            length = Number(prompt("Invalid number! Please enter a number between 8 and 128.",8));
+        while(Number.isNaN(Number(length)) === true || length < 8 || length > 128){
+            length = prompt("Invalid number! Please enter a number between 8 and 128. \n If you click cancel button, default value 8 will be set.");
+
+            // if cancel button clicked in reprompt, just set to default(8).
+            if(length===null){
+                length = 8;    
+            }
         }
     }
-    else{
-        length = 8; // default : 8
+    else{  // if cancel button clicked, set to default(8)
+        length = 8;
     }
     
 // 2. PASSWORD OPTION PROMPT
     option = prompt("Input first letter of each password type you want to add. You can choose multiple types. \n s : special characters \n n : numeric characters \n l : lowercase characters \n u : uppercase characters \n *default: snlu");
-    console.log("2nd"+option)
-    if(option !== null && option !== ""){
+
+    if(option !== null){
 
         optionValidator();
 
         // Option Validator & Reinput prompt
-        validator : while(!optValidBoolean){
-            option = prompt("Invalid input! Please enter letters among s, n, l, u. \n s : special characters \n n : numeric characters \n l : lowercase characters \n u : uppercase characters \n *example: sl");
-
-            if(option === null) break;
+        while(!optValidBoolean){
+            option = prompt("Invalid input! Please enter letters among s, n, l, u. \n s : special characters \n n : numeric characters \n l : lowercase characters \n u : uppercase characters \n *example: sl \nIf you click cancel button, default value 'n' will be set.");
 
             optionValidator();
         }
     }
-    else{
-        
-        option ='snlu'; // default : all options on
+    else{ // if cancel button clicked, set to default(n: Numeric characters)
+        option ='n';
     }
 
     function optionValidator() {
-        console.log("inside func")
-        var optionArr = option.split(""); 
+        if(option === ""){ // If blank is entered
+            optValidBoolean = false;
+        }
+        else if(option === null){ // if cancel button clicked 
+            optValidBoolean = true;
+            option = "n" // set to default(n)
+        }
+        else{
+            var optionArr = option.split(""); 
 
-        // If the option input includes any invalid letter, return false  
-        optValidBoolean = optionArr.every((el)=>{
-            return el === 's' || el === 'n' || el === 'l' || el === 'u';
+            // If the option input includes any invalid letter, return false  
+            optValidBoolean = optionArr.every((el)=>{
+                return el === 's' || el === 'n' || el === 'l' || el === 'u';
         })
     }
-
+    }
+console.log(length, option)
 /*************************
 /*    PASSWORD POOL  
 *************************/
