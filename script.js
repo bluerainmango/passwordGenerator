@@ -1,3 +1,8 @@
+
+window.onload = function(){
+// document.addEventListener('load',function(){
+
+
 var length;
 var option;
 var optValidBoolean = true;
@@ -6,8 +11,9 @@ var optValidBoolean = true;
 /*   PROMPT VALIDATION
 *************************/
 
+
 // 1. PASSWORD LENGTH PROMPT
-    length = prompt("please input a number of the length of the password you want.\n *min: 8 - max: 128\n *default: 8");
+    length = prompt("Please input a number of the length of the password you want.\n *min: 8 - max: 128\n *default: 8");
 
     if(length !== null){
 
@@ -26,7 +32,7 @@ var optValidBoolean = true;
     }
     
 // 2. PASSWORD OPTION PROMPT
-    option = prompt("Input first letter of each password type you want to add. You can choose multiple types. \n s : special characters \n n : numeric characters \n l : lowercase characters \n u : uppercase characters \n *default: snlu");
+    option = prompt("Input first letter of each password type you want to add. You can choose multiple types. If you click cancel button, default value 'n' will be set. \n s : special characters \n n : numeric characters \n l : lowercase characters \n u : uppercase characters \n *default: n");
 
     if(option !== null){
 
@@ -34,7 +40,7 @@ var optValidBoolean = true;
 
         // Option Validator & Reinput prompt
         while(!optValidBoolean){
-            option = prompt("Invalid input! Please enter letters among s, n, l, u. \n s : special characters \n n : numeric characters \n l : lowercase characters \n u : uppercase characters \n *example: sl \nIf you click cancel button, default value 'n' will be set.");
+            option = prompt("Invalid input! Please enter letters among s, n, l, u. \n *example: sl \n s : special characters \n n : numeric characters \n l : lowercase characters \n u : uppercase characters \nIf you click cancel button, default value 'n' will be set.");
 
             optionValidator();
         }
@@ -60,7 +66,8 @@ var optValidBoolean = true;
         })
     }
     }
-console.log(length, option)
+
+
 /*************************
 /*    PASSWORD POOL  
 *************************/
@@ -109,14 +116,4 @@ document.getElementById('copyBtn').addEventListener('click',()=>{
     alert("Copied the text : " + copyPwd.value);
 });
 
-
-// at least one type should be selected. prompt
-    // length ( 8 - 128 )
-    // special cha
-    // Num
-    // lowercase cha
-    // uppercase cha
-
-// display generator with answered setting
-    // 1. generate pwd btn : generated pwd in page
-    // 2. copy btn
+}
