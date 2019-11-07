@@ -1,6 +1,11 @@
-
-window.onload = function(){
-// document.addEventListener('load',function(){
+/* MY PERSONAL REFERENCE 
+**** DISREGARD THIS PART ****
+window.addEventListener('load',function(){
+document.addEventListener('load',function(){
+document.querySelector('link').onload = function(){
+document.addEventListener('DOMContentLoaded',function(){
+function func(){
+*/
 
 
 var length;
@@ -13,13 +18,13 @@ var optValidBoolean = true;
 
 
 // 1. PASSWORD LENGTH PROMPT
-    length = prompt("Please input a number of the length of the password you want.\n *min: 8 - max: 128\n *default: 8");
+    length = prompt("Please input a number of the length of the password you want.\nIf you click cancel button, default value 8 will be set. \n *min: 8 - max: 128\n *default: 8");
 
     if(length !== null){
 
         // Length Validator & Reinput prompt
         while(Number.isNaN(Number(length)) === true || length < 8 || length > 128){
-            length = prompt("Invalid number! Please enter a number between 8 and 128. \n If you click cancel button, default value 8 will be set.");
+            length = prompt("Invalid number! Please enter a number between 8 and 128. \nIf you click cancel button, default value 8 will be set.");
 
             // if cancel button clicked in reprompt, just set to default(8).
             if(length===null){
@@ -116,4 +121,8 @@ document.getElementById('copyBtn').addEventListener('click',()=>{
     alert("Copied the text : " + copyPwd.value);
 });
 
-}
+
+
+// }
+
+// });

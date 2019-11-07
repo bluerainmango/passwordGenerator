@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- <meta http-equiv="Refresh" content="2; url=public/index.html"> -->
     <title>Password Generator</title>
     
-    <link rel="stylesheet" href="style.css">
-</head>
+    <link rel="preload" as="style" href="./style.css">
+    <link rel="stylesheet" href="./style.css">
 
-<body>
+  </head>
+
+<!-- <body onload ='func()'>  // Doesn't work as expected. Still sometime prompt pops up first before applying style to DOM. So I manually set time for js to be loaded below.😥 -->
+  <body>
     <header>
       <h1 class="heading">Password Generator</h1>
     </header>
@@ -30,6 +32,13 @@
       </div>
     </main>
     
-    <script src="script.js"></script>
+    <script>
+      setTimeout(function(){
+        var script = document.createElement('script');
+            script.src = './script.js';
+
+        document.body.appendChild(script);
+      },1000);
+    </script>
 </body>
 </html>
